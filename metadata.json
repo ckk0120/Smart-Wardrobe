@@ -1,0 +1,6 @@
+{
+  "name": "智能衣橱",
+  "description": "一个能够拍照记录衣服、智能分类并推荐穿搭的智能衣橱应用程序。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
