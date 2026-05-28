@@ -74,11 +74,11 @@ fun ClosetCatalogScreen(
                     }
                 },
                 actions = {
-                    // Quick guide warning about Gemini Key
+                    // Quick guide warning about Qwen Key
                     IconButton(onClick = {
                         Toast.makeText(
                             context,
-                            if (isApiKeyAvailable) "Gemini AI 已成功连接 ⚡" else "请在 AI Studio 侧边栏的 Secrets 中设置 GEMINI_API_KEY",
+                            if (isApiKeyAvailable) "千问 AI 已成功连接 ⚡" else "请在本地 .env 中设置 QWEN_API_KEY",
                             Toast.LENGTH_LONG
                         ).show()
                     }) {
@@ -494,7 +494,7 @@ fun AddClothingDialog(
                                 )
                             }
                             Text(
-                                text = "点击下方模板模拟用手持相机拍下一件衣服，将调用真实 Gemini API 智能分类和自动生成穿搭分析！",
+                                text = "点击下方模板模拟用手持相机拍下一件衣服，将调用真实千问 API 智能分类和自动生成穿搭分析！",
                                 fontSize = 11.sp,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f),
                                 modifier = Modifier.padding(top = 2.dp)
@@ -524,7 +524,7 @@ fun AddClothingDialog(
                                                 name = title
                                                 notesInput = desc
                                                 
-                                                // Generate mock picture on Canvas, then trigger Gemini Vision/Text analyzer
+                                                // Generate mock picture on Canvas, then trigger Qwen Vision/Text analyzer
                                                 val mockBitmap = generateMockBitmap(title, colorName)
                                                 
                                                 viewModel.runSmartClothingAnalysis(
@@ -741,7 +741,7 @@ fun AddClothingDialog(
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Text(
-                            text = if (addState is AddClothingState.AiAnalyzing) "Gemini 正在分析照片提取配色/面料..." else "正在拼命为您存档中...",
+                            text = if (addState is AddClothingState.AiAnalyzing) "千问正在分析照片提取配色/面料..." else "正在拼命为您存档中...",
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onTertiaryContainer
@@ -802,7 +802,7 @@ fun AddClothingDialog(
 }
 
 /**
- * Helper to dynamically draw a dummy mock photo on canvas for Gemini Vision REST requests!
+ * Helper to dynamically draw a dummy mock photo on canvas for Qwen Vision REST requests!
  */
 fun generateMockBitmap(name: String, colorName: String): Bitmap {
     val bitmap = Bitmap.createBitmap(500, 500, Bitmap.Config.ARGB_8888)

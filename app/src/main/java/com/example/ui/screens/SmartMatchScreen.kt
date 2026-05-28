@@ -73,7 +73,7 @@ fun SmartMatchScreen(
                     Column {
                         Text("AI 穿搭助手", fontWeight = FontWeight.Bold, fontSize = 22.sp)
                         Text(
-                            "基于您的真实衣橱，Gemini 智能定制今日Look",
+                            "基于您的真实衣橱，千问智能定制今日Look",
                             fontSize = 12.sp,
                             color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
                         )
@@ -213,7 +213,7 @@ fun SmartMatchScreen(
             Button(
                 onClick = {
                     if (!isApiKeyAvailable) {
-                        Toast.makeText(context, "请先在 AI Studio 侧栏中的 Secrets 设置 GEMINI_API_KEY！", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "请先在本地 .env 中设置 QWEN_API_KEY！", Toast.LENGTH_LONG).show()
                         return@Button
                     }
                     viewModel.generateAiOutfitRecommendation(
@@ -231,7 +231,7 @@ fun SmartMatchScreen(
                 Icon(Icons.Default.AutoAwesome, contentDescription = "Generate")
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = if (aiRecommendState is AiRecommendState.Loading) "Gemini 时尚灵感匹配中..." else "Gemini 智能穿搭推荐",
+                    text = if (aiRecommendState is AiRecommendState.Loading) "千问时尚灵感匹配中..." else "千问智能穿搭推荐",
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp
                 )
@@ -304,7 +304,7 @@ fun SmartMatchScreen(
                                 )
                                 Spacer(modifier = Modifier.height(16.dp))
                                 Text(
-                                    text = "Gemini 管家翻箱倒柜中...",
+                                    text = "千问管家翻箱倒柜中...",
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 14.sp,
                                     color = MaterialTheme.colorScheme.primary
@@ -530,7 +530,7 @@ fun RecommendationSuccessView(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Reasoning explanation description box by Gemini Master
+            // Reasoning explanation description box by Qwen
             Box(
                 modifier = Modifier
                     .fillMaxWidth()

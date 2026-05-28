@@ -1,6 +1,6 @@
 # 🧥 智能衣橱 (Smart Wardrobe)
 
-一个基于 **Kotlin + Jetpack Compose** 及 **Google Gemini API** 构建的、兼顾科学性与美学质感的高级智能衣橱管理与穿搭管家应用。
+一个基于 **Kotlin + Jetpack Compose** 及 **通义千问（Qwen）API** 构建的、兼顾科学性与美学质感的高级智能衣橱管理与穿搭管家应用。
 
 通过清爽舒适的**暖米色（Beige）**背景、典雅的**森林绿（Green）**与神秘的**紫罗兰（Purple）**色调结合，彻底告别沉闷冷酷的黑白色调，在轻松愉悦的视觉体验中管理和发现您衣橱的无限可能。
 
@@ -18,8 +18,8 @@
 - **👕 品类结构配比**：直观展示各类上衣、裤子、外套在衣橱中的真实数值与百分占比，一目了然。
 - **🧠 智能衣橱购物采购指南**：根据您的具体衣架配比状态，动态生成个性化的美学采购分析建议（例如防止“上衣极多、下装极少，而陷入每天‘没衣服穿’的买衣误区”）。
 
-### 🤖 3. Gemini 智能穿搭助手 (Smart AI Match)
-- **真实衣橱匹配**：拒绝浮夸的死板纸上谈兵，Gemini 智能引擎会统盘分析您衣橱里的真实衣物色彩、属性。
+### 🤖 3. 千问智能穿搭助手 (Smart AI Match)
+- **真实衣橱匹配**：拒绝浮夸的死板纸上谈兵，千问智能引擎会统盘分析您衣橱里的真实衣物色彩、属性。
 - **天气与场景定制**：输入今日实温与天气条件（内置酷暑、微风、阵雨等预设），选择通勤、约会、运动或派对场合。
 - **AI 智能穿搭组合**：生成整套 Look。提供**“管家美学解析”**，为您深度解构这一套穿搭的艺术原理与色块构成。
 
@@ -51,23 +51,24 @@
 - UI 框架：Jetpack Compose (100% 声明式 UI)
 - 架构模式：MVVM (Model-View-ViewModel) + Live-Data/StateFlow
 - 本地存储：Room SQL Database (实现极速、离线的衣柜/手账物理存储)
-- AI 大模型：Google Gemini Android API SDK (一端运行，无需自建服务端)
+- AI 大模型：通义千问 OpenAI 兼容接口 (一端运行，无需自建服务端)
 
 ---
 
 ## 🚀 启动与配置指南
 
-### 1. 注入您的 Gemini API 密钥
-应用完全通过客户端直接调用 Gemini 官方大模型，保证您的衣服隐私绝不出网：
-1. 注册获取您的 [Gemini API Key](https://ai.google.dev/)。
-2. 在 **AI Studio 侧栏中的 Secrets** 面板，添加名为 `GEMINI_API_KEY` 的键，并填入您的 API Key 值。
-3. 应用会自动将其注入为 `BuildConfig.GEMINI_API_KEY` 以供读取。
+### 1. 注入您的千问 API 密钥
+应用通过客户端直接调用千问 OpenAI 兼容接口：
+1. 在阿里云百炼 / DashScope 获取您的千问 API Key。
+2. 在项目根目录创建 `.env`，填入 `QWEN_API_KEY=你的真实密钥`。
+3. 应用会将其注入为 `BuildConfig.QWEN_API_KEY` 以供读取。
+4. 当前接口基地址为 `https://dashscope.aliyuncs.com/compatible-mode/v1`。
 
 ### 2. 本地构建与安装
 请使用标准的 Gradle 构建工具链：
 ```bash
 # 自动编译并检查代码质量
-gradle assembleDebug
+./gradlew assembleDebug
 ```
 编译成功后，应用会在流式模拟器 (Streaming Emulator) 中自动重新安装预览，您可以立即在页面的前几个 Tab 中开始愉快地录入新衣服并体验。
 

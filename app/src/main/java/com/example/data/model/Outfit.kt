@@ -13,7 +13,7 @@ data class Outfit(
     val outerwearId: Int? = null,
     val accessoryId: Int? = null,
     val isFavorite: Boolean = false,
-    val aiRecommendationReason: String? = null, // Store Gemini recommended reasons
+    val aiRecommendationReason: String? = null, // Store Qwen recommended reasons
     val scenario: String? = null, // Meeting, Casual, Dating, Sports, Daily
     val timestamp: Long = System.currentTimeMillis()
 )
